@@ -1,0 +1,31 @@
+/* Custom Sage Color Palette */
+:root {
+    --sage-50: #f8faf9;
+    --sage-100: #e8eeea;
+    --sage-500: #64748b;
+    --sage-600: #475569;
+    --sage-700: #334155;
+    --sage-900: #0f172a;
+}
+
+/* Typography */
+.font-serif {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Custom Animations */
+.hover\:scale-105:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+/* Custom Shadows */
+.shadow-custom {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),
+        0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Custom Gradients */
+.bg-gradient-sage {
+    background: linear-gradient(to right, var(--sage-500), var(--sage-600));
+}
