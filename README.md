@@ -14,8 +14,8 @@
 ۱. **کلون کردن مخزن:**
 
 ```bash
-git clone https://github.com/username/project.git
-cd project
+git clone git@github.com:YounesMokhtari/paint.git
+cd paint
 ```
 
 ۲. **نصب وابستگی‌ها:**
@@ -42,7 +42,7 @@ php artisan key:generate
 ۵. **اجرای مهاجرت‌ها و Seeders:**
 
 ```bash
-php artisan migrate --seed
+php artisan migrate:fresh --seed
 ```
 
 ## اجرای پروژه
