@@ -77,15 +77,18 @@ php artisan migrate:refresh --seed
 
 ## رفع مشکلات احتمالی
 
--   در صورت نیاز به پاک کردن کش تنظیمات:
-    ```bash
+### در صورت نیاز به پاک کردن کش تنظیمات:
+
+```bash
     php artisan config:clear
     php artisan cache:clear
-    ```
--   حل مشکلات مربوط به مجوزها (در لینوکس/macOS):
-    ```bash
+```
+
+### حل مشکلات مربوط به مجوزها (در لینوکس/macOS):
+
+```bash
     chmod -R 777 storage bootstrap/cache
-    ```
+```
 
 ## مجوز
 
