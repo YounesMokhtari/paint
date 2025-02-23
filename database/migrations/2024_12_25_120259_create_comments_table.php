@@ -21,10 +21,7 @@ return new class extends Migration
             $table->foreignIdFor(User::class, CommentFields::USER_ID)
                 ->constrained()
                 ->onDelete('cascade');
-            $table->foreignIdFor(BlogPost::class, CommentFields::BLOG_POST_ID)
-                ->nullable()
-                ->constrained()
-                ->onDelete('cascade');
+            $table->morphs('commentable');
             $table->timestamps();
         });
     }

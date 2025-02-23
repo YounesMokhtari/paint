@@ -46,14 +46,13 @@ class SupportController extends Controller
 
     public function show(Ticket $ticket)
     {
-//        $this->authorize('view', $ticket);
+        //        $this->authorize('view', $ticket);
 
         return view('support.show', compact('ticket'));
     }
 
     public function reply(Request $request, Ticket $ticket)
     {
-        $this->authorize('reply', $ticket);
 
         $validated = $request->validate([
             'message' => 'required|string'
@@ -64,7 +63,9 @@ class SupportController extends Controller
             'user_id' => Auth::id(),
             'message' => $validated['message']
         ]);
-
+        $ticket->update([
+            'status' => 'closed'
+        ]);
         return redirect()->back()
             ->with('success', 'پاسخ شما با موفقیت ثبت شد.');
     }

@@ -3,6 +3,7 @@
 namespace App\Models\ArtWorks;
 
 use App\Models\Comments\Comment;
+use App\Models\Comments\CommentFields;
 use App\Models\User;
 use Database\Factories\ArtWorks\ArtWorkFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -28,6 +29,7 @@ class ArtWork extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class, ArtWorkFields::ID);
+        return $this->hasMany(Comment::class, CommentFields::MORPH_ID)
+            ->where(CommentFields::MORPH_TYPE, ArtWork::class);
     }
 }

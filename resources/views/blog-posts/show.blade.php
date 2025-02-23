@@ -67,7 +67,7 @@
 
                     @auth
                         <div class="mb-8">
-                            @include('comments._form', ['blog_post_id' => $blogPost->id])
+                            @include('comments._form', ['blog_post_id' => $blogPost->id, 'type' => 'blog'])
                         </div>
                     @endauth
 

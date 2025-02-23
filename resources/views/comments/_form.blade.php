@@ -1,7 +1,7 @@
 <form action="{{ route('comments.store') }}" method="POST" class="mt-4 bg-white p-6 rounded-lg shadow-md">
     @csrf
     <input type="hidden" name="blog_post_id" value="{{ $blog_post_id ?? '' }}">
-
+    <input type="hidden" name="type" value="{{ $type ?? '' }}">
     <div class="mb-4">
         <label class="block text-gray-800 text-sm font-bold mb-2">
             {{ __('comments.your_comment') }}

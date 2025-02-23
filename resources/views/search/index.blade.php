@@ -19,16 +19,11 @@
         <h2 class="text-xl font-semibold mt-6 border-b pb-2">دوره‌ها</h2>
         @forelse ($courses as $course)
             <div class="border rounded-lg p-4 mt-4 shadow-sm">
-                <h3 class="text-lg font-semibold">{{ $course->title }}</h3>
-                <p class="text-gray-600">{{ $course->description }}</p>
+                <a href="{{ route('courses.show', ['course' => $course->id]) }}">
+                    <h3 class="text-lg font-semibold">{{ $course->title }}</h3>
+                    <p class="text-gray-600">{{ $course->description }}</p>
+                </a>
 
-                @if (!empty($course->metadata))
-                    <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-                        @foreach ($course->metadata as $item)
-                            <li><strong>{{ $item['key'] }}:</strong> {{ $item['value'] }}</li>
-                        @endforeach
-                    </ul>
-                @endif
             </div>
         @empty
             <p class="text-gray-500 mt-4">هیچ دوره‌ای یافت نشد.</p>
@@ -38,15 +33,11 @@
         <h2 class="text-xl font-semibold mt-6 border-b pb-2">آثار هنری</h2>
         @forelse ($artworks as $artwork)
             <div class="border rounded-lg p-4 mt-4 shadow-sm">
-                <h3 class="text-lg font-semibold">{{ $artwork->title }}</h3>
+                <a href="{{ route('art-works.show', ['art_work' => $artwork->id]) }}">
+                    <h3 class="text-lg font-semibold">{{ $artwork->title }}</h3>
+                    <p class="text-gray-600">{{ $artwork->description }}</p>
+                </a>
 
-                @if (!empty($artwork->metadata))
-                    <ul class="list-disc list-inside mt-2 text-sm text-gray-700">
-                        @foreach ($artwork->metadata as $item)
-                            <li><strong>{{ $item['key'] }}:</strong> {{ $item['value'] }}</li>
-                        @endforeach
-                    </ul>
-                @endif
             </div>
         @empty
             <p class="text-gray-500 mt-4">هیچ اثر هنری یافت نشد.</p>

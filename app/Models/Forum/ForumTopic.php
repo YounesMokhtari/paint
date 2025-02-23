@@ -33,9 +33,9 @@ class ForumTopic extends Model
         return $this->hasMany(ForumReply::class, ForumReplyFields::TOPIC_ID);
     }
 
-    public function lastReply()
+    public function lastreply()
     {
-        return $this->replies()->latest()->first();
+        return $this->hasOne(ForumReply::class, ForumReplyFields::TOPIC_ID)->latestOfMany();
     }
 
     public function isOwnedBy(User $user): bool

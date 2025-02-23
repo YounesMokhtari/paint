@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreCommentRequest;
 use App\Http\Requests\UpdateCommentRequest;
+use App\Models\ArtWorks\ArtWork;
+use App\Models\BlogPosts\BlogPost;
 use App\Models\Comments\Comment;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,8 +33,8 @@ class CommentController extends Controller
      */
     public function store(StoreCommentRequest $request)
     {
-        $comment = Comment::create($request->validated() + ['user_id' => Auth::id()]);
-        return redirect()->route('blog-posts.show', $comment->blog_post_id)->with('success', 'Comment created successfully');
+        $comment = Comment::create($request->validated() + ['user_id' => Auth::id(), 'commentable_id' => $request->blog_post_id, 'commentable_type' => $request->type == 'art' ? ArtWork::class : BlogPost::class]);
+        return redirect()->back()->with('success', 'Comment created successfully');
     }
 
     /**

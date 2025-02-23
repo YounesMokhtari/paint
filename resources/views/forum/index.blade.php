@@ -72,11 +72,11 @@
                                     </div>
                                 </div>
 
-                                @if ($topic->lastReply())
+                                @if ($topic->lastreply)
                                     <div class="text-sm text-gray-500 text-right rtl:text-left">
                                         <div class="font-medium text-sage-600">{{ __('forum.topics.last_reply') }}
                                         </div>
-                                        <div>{{ $topic->lastReply()->formatted_created_at }}</div>
+                                        <div>{{ $topic->lastreply->formatted_created_at }}</div>
                                     </div>
                                 @endif
                             </div>

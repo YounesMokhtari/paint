@@ -19,5 +19,9 @@ return [
     'messages' => [
         'ticket_created' => 'تیکت شما با موفقیت ایجاد شد',
         'message_sent' => 'پیام شما با موفقیت ارسال شد'
+    ],
+    'status' => [
+        'closed' => 'بسته شده',
+        'open' => 'باز'
     ]
 ];

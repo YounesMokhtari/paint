@@ -70,6 +70,7 @@ class ArtWorkController extends Controller
      */
     public function show(ArtWork $artWork)
     {
+        $artWork->load('comments.user');
         return view('art-works.show', compact('artWork'));
     }
 

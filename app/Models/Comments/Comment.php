@@ -4,7 +4,6 @@ namespace App\Models\Comments;
 
 use App\Models\ArtWorks\ArtWork;
 use App\Models\BlogPosts\BlogPost;
-use App\Models\Courses\Course;
 use App\Models\User;
 use Database\Factories\Comments\CommentFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,8 +16,9 @@ class Comment extends Model
 
     protected $fillable = [
         CommentFields::USER_ID,
-        CommentFields::BLOG_POST_ID,
-        CommentFields::CONTENT
+        CommentFields::CONTENT,
+        CommentFields::MORPH_ID,
+        CommentFields::MORPH_TYPE,
     ];
 
     public function user()
@@ -28,11 +28,11 @@ class Comment extends Model
 
     public function artwork()
     {
-        return $this->belongsTo(BlogPost::class, CommentFields::BLOG_POST_ID);
+        return $this->belongsTo(ArtWork::class, foreignKey: CommentFields::MORPH_ID)->where(CommentFields::MORPH_TYPE, ArtWork::class);
     }
 
-    public function course()
+    public function blogPost()
     {
-        return $this->belongsTo(Course::class, CommentFields::COURSE_ID);
+        return $this->belongsTo(BlogPost::class, foreignKey: CommentFields::MORPH_ID)->where(CommentFields::MORPH_TYPE, BlogPost::class);
     }
 }

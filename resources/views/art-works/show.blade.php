@@ -24,7 +24,7 @@
                     @auth
                         <div class="mt-8">
                             <h3 class="text-xl font-bold mb-4">{{ __('art-works.show.add_comment') }}</h3>
-                            @include('comments._form', ['art_work_id' => $artWork->id])
+                            @include('comments._form', ['blog_post_id' => $artWork->id, 'type' => 'art'])
                         </div>
                     @endauth
 

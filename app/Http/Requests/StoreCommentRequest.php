@@ -24,7 +24,8 @@ class StoreCommentRequest extends FormRequest
     {
         return [
             CommentFields::CONTENT => 'required|string|max:255',
-            CommentFields::BLOG_POST_ID => 'required|exists:blog_posts,id',
+            CommentFields::BLOG_POST_ID => 'required|numeric',
+            'type' => 'required|in:blog,art'
         ];
     }
 }

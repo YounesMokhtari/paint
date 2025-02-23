@@ -3,6 +3,7 @@
 namespace App\Models\BlogPosts;
 
 use App\Models\Comments\Comment;
+use App\Models\Comments\CommentFields;
 use App\Models\User;
 use Database\Factories\BlogPosts\BlogPostFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -32,7 +33,8 @@ class BlogPost extends Model
 
     public function comments()
     {
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class, CommentFields::MORPH_ID)
+            ->where(CommentFields::MORPH_TYPE, BlogPost::class);
     }
 
     public function getCommentsCountAttribute()

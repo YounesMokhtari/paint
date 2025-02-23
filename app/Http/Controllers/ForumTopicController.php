@@ -15,7 +15,7 @@ class ForumTopicController extends Controller
      */
     public function index(Request $request)
     {
-        $query = ForumTopic::query()->with(['user', 'replies']);
+        $query = ForumTopic::query()->with(['user', 'lastreply']);
 
         // اعمال فیلتر دسته‌بندی
         if ($request->filled('category')) {
@@ -29,7 +29,7 @@ class ForumTopicController extends Controller
                 $q->where('title', 'like', "%{$searchTerm}%")
                     ->orWhere('content', 'like', "%{$searchTerm}%")
                     ->orWhereHas('user', function ($q) use ($searchTerm) {
-                        $q->where('username', 'like', "%{$searchTerm}%");
+                        $q->where('name', 'like', "%{$searchTerm}%");
                     })
                     ->orWhereHas('replies', function ($q) use ($searchTerm) {
                         $q->where('content', 'like', "%{$searchTerm}%");
@@ -37,7 +37,7 @@ class ForumTopicController extends Controller
             });
         }
 
-        $forumTopics = $query->latest()->paginate(15)->withQueryString();
+        $forumTopics = $query->latest()->paginate(15);
         return view('forum.index', compact('forumTopics'));
     }
 

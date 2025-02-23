@@ -9,8 +9,9 @@
                         <div class="mt-2 flex items-center space-x-4 text-sm text-gray-500">
                             <span>شماره تیکت: {{ $ticket->id }}</span>
                             <span>{{ $ticket->created_at->format('Y/m/d H:i') }}</span>
-                            <span class="px-2 py-1 rounded-full text-xs
-                                @if($ticket->status === 'open') bg-green-100 text-green-800
+                            <span
+                                class="px-2 py-1 rounded-full text-xs
+                                @if ($ticket->status === 'open') bg-green-100 text-green-800
                                 @elseif($ticket->status === 'closed') bg-red-100 text-red-800
                                 @else bg-yellow-100 text-yellow-800 @endif">
                                 {{ __("support.status.{$ticket->status}") }}
@@ -20,12 +21,12 @@
 
                     <!-- Messages -->
                     <div class="space-y-6 mb-8">
-                        @foreach($ticket->replies as $reply)
-                            <div class="flex gap-4 @if($reply->user_id === $ticket->user_id) flex-row @else flex-row-reverse @endif">
+                        @foreach ($ticket->replies as $reply)
+                            <div
+                                class="flex gap-4 @if ($reply->user_id === $ticket->user_id) flex-row @else flex-row-reverse @endif">
                                 <div class="flex-shrink-0">
-                                    <img src="{{ $reply->user->profile_photo }}"
-                                         alt="{{ $reply->user->name }}"
-                                         class="w-10 h-10 rounded-full">
+                                    <img src="{{ $reply->user->profile_photo }}" alt="{{ $reply->user->name }}"
+                                        class="w-10 h-10 rounded-full">
                                 </div>
                                 <div class="flex-grow">
                                     <div class="bg-gray-50 dark:bg-gray-700 rounded-lg p-4">
@@ -45,14 +46,12 @@
                     </div>
 
                     <!-- Reply Form -->
-                    @if($ticket->status !== 'closed')
+                    @if ($ticket->status !== 'closed' && auth()->user()->isAdmin())
                         <form action="{{ route('support.reply', $ticket) }}" method="POST" class="mt-6">
                             @csrf
                             <div>
                                 <x-input-label for="message" value="پاسخ شما" />
-                                <textarea id="message" name="message" rows="4"
-                                          class="block w-full mt-1 rounded-md border-gray-300"
-                                          required></textarea>
+                                <textarea id="message" name="message" rows="4" class="block w-full mt-1 rounded-md border-gray-300" required></textarea>
                                 <x-input-error :messages="$errors->get('message')" class="mt-2" />
                             </div>
 
