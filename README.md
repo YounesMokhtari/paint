@@ -45,6 +45,12 @@ php artisan key:generate
 php artisan migrate --seed
 ```
 
+۶. **لینک کردن storge**
+
+```bash
+php artisan storage:link
+```
+
 ## اجرای پروژه
 
 ### بک‌اند (Laravel)
