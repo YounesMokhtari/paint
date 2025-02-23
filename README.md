@@ -14,8 +14,8 @@
 ۱. **کلون کردن مخزن:**
 
 ```bash
-git clone git@github.com:YounesMokhtari/paint.git
-cd paint
+git clone https://github.com/username/project.git
+cd project
 ```
 
 ۲. **نصب وابستگی‌ها:**
@@ -59,6 +59,14 @@ php artisan serve
 
 ```bash
 npm run dev
+```
+
+## ریست کردن دیتابیس
+
+برای ریست کردن دیتابیس و اجرای مجدد مهاجرت‌ها:
+
+```bash
+php artisan migrate:refresh --seed
 ```
 
 ## رفع مشکلات احتمالی
