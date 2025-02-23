@@ -14,8 +14,8 @@
 ۱. **کلون کردن مخزن:**
 
 ```bash
-git clone https://github.com/younesmokhtari/paint.git
-cd project
+git clone git@github.com:YounesMokhtari/paint.git
+cd paint
 ```
 
 ۲. **نصب وابستگی‌ها:**
