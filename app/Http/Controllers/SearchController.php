@@ -39,6 +39,12 @@ class SearchController extends Controller
             ->take(8)
             ->get();
 
-        return view('search.index', compact('courses', 'artworks', 'query', 'category', 'level'));
+        return view('search.index', [
+            'courses' => $courses,
+            'artworks' => $artworks,
+            'query' => $query,
+            'category' => $category,
+            'level' => $level
+        ]);
     }
 }
