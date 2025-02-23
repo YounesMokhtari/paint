@@ -42,7 +42,7 @@ php artisan key:generate
 ۵. **اجرای مهاجرت‌ها و Seeders:**
 
 ```bash
-php artisan migrate:fresh --seed
+php artisan migrate --seed
 ```
 
 ## اجرای پروژه
