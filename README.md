@@ -14,7 +14,7 @@
 ۱. **کلون کردن مخزن:**
 
 ```bash
-git clone https://github.com/username/project.git
+git clone https://github.com/younesmokhtari/paint.git
 cd project
 ```
 
